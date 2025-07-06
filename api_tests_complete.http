@@ -1,0 +1,112 @@
+### ====================================
+### API DE PRODUCTOS - PRUEBAS COMPLETAS
+### Desarrollado siguiendo el Laboratorio 16
+### ====================================
+
+### Variables (modificar según sea necesario)
+@baseUrl = http://localhost:8000
+@productId = 1
+
+### ====================================
+### 1. GET - Obtener todos los productos
+### ====================================
+GET {{baseUrl}}/productos
+Accept: application/json
+
+### ====================================
+### 2. GET - Obtener un producto específico
+### ====================================
+GET {{baseUrl}}/productos/{{productId}}
+Accept: application/json
+
+### ====================================
+### 3. GET - Obtener producto inexistente (Error)
+### ====================================
+GET {{baseUrl}}/productos/999
+Accept: application/json
+
+### ====================================
+### 4. POST - Crear un nuevo producto
+### ====================================
+POST {{baseUrl}}/productos
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Smartphone Xiaomi",
+    "marca": "Xiaomi", 
+    "precio": 299.99,
+    "stock": 35,
+    "id_categoria": 2
+}
+
+### ====================================
+### 5. POST - Crear producto con datos completos
+### ====================================
+POST {{baseUrl}}/productos
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Laptop ASUS ROG",
+    "marca": "ASUS",
+    "precio": 1599.99,
+    "stock": 12,
+    "id_categoria": 1
+}
+
+### ====================================
+### 6. PUT - Actualizar un producto existente
+### ====================================
+PUT {{baseUrl}}/productos/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Laptop Dell XPS 13 (Actualizada)",
+    "marca": "Dell",
+    "precio": 1399.99,
+    "stock": 20,
+    "id_categoria": 1
+}
+
+### ====================================
+### 7. PUT - Actualizar producto inexistente (Error)
+### ====================================
+PUT {{baseUrl}}/productos/999
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Producto Inexistente",
+    "marca": "Marca",
+    "precio": 100.00,
+    "stock": 1,
+    "id_categoria": 1
+}
+
+### ====================================
+### 8. DELETE - Eliminar un producto
+### ====================================
+DELETE {{baseUrl}}/productos/11
+Accept: application/json
+
+### ====================================
+### 9. DELETE - Eliminar producto inexistente (Error)
+### ====================================
+DELETE {{baseUrl}}/productos/999
+Accept: application/json
+
+### ====================================
+### NOTAS DE USO:
+### 
+### 1. Instalar la extensión "REST Client" en VS Code
+### 2. Abrir este archivo en VS Code
+### 3. Hacer clic en "Send Request" encima de cada petición
+### 4. Cambiar la variable @productId para probar diferentes IDs
+### 5. El servidor debe estar corriendo en http://localhost:8000
+###
+### COMANDOS PARA INICIAR EL SERVIDOR:
+### cd "/home/rafael/tmp/examen 16/ApiProducto"
+### php -S localhost:8000 -t public
+### ====================================
